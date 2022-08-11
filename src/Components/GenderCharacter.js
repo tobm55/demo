@@ -17,7 +17,7 @@ const GenderCharacter = () => {
     ).then(
       data => {
         setData(data)
-        console.log(data)
+        console.log(data.story.characters)
       }
     )
     

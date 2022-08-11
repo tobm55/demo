@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import "./App.scss";
 
 import { ChartComp } from "./Components/ChartComp";
+import  Pageone  from "./Components/Pageone";
 import GenderCharacter from "./Components/GenderCharacter";
 import ReactiveParagraph from "./Components/ReactiveParagraph";
 import ReactiveGraph from "./Components/ReactiveGraph";
@@ -18,6 +19,8 @@ import {
 } from "./Components/Utility";
 
 import { RootStoreI } from "./Store";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const { sourced } = useSelector((store: RootStoreI) => store.dataReducer);
@@ -41,6 +44,7 @@ function App() {
   }, [sourced]);
 
   return (
+    <Router>
     <div className="app">
       <StoryInput></StoryInput>
       {sourced && (
@@ -63,9 +67,15 @@ function App() {
           <ReportSectionLabel text="Raw Data" />
           <RawData></RawData>
           <ReportBackToTop></ReportBackToTop>
+          <Switch>
+            <Route path="/test">
+              <Pageone/>
+            </Route>
+          </Switch>
         </div>
       )}
     </div>
+    </Router>
   );
 }
 
